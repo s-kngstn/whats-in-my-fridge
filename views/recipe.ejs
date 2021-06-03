@@ -1,0 +1,48 @@
+<%- include("header") -%>
+<div class="search-body">
+  <div class="container">
+    <h1 class="header">WHATS IN YOUR FRIDGE?</h1>
+    <h3 class="sub-header">
+      Search recipes using ingredients already in your kitchen.
+    </h3>
+  </div>
+  <div class="container">
+    <div class="box">
+      <h1 class="recipe-header"><%= title %></h1>
+      <img
+        class="recipe-image"
+        src="<%= `${image}` %>"
+        alt="test"
+        height="400px"
+        width="auto"
+      />
+      <ul class="recipe-list">
+        <% ingredientList.forEach(function (ingredient) { %>
+        <li><%= ingredient %></li>
+        <% }); %>
+      </ul>
+
+      <div class="instructions-box">
+        <% stepList.forEach(function (step) { %>
+        <p class="recipe-instructions"><%= step %></p>
+        <% }); %>
+      </div>
+    </div>
+
+    <div class="search-box">
+      <form class="ingredients-form" action="/" method="post">
+        <input
+          id="ingredients"
+          class="ingredients-input"
+          type="text"
+          name="ingredients"
+          placeholder="Enter your ingredients.."
+        />
+        <button id="btn" class="btn ingredients-btn" type="submit">
+          Find New Recipe
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include("footer") -%>

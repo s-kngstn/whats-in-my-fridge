@@ -1,0 +1,187 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  background: #213037;
+  /* background: #8e7a3d; */
+}
+
+.container {
+  padding: 2rem 0;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden; 
+  /* border: tomato 6px dashed; */
+}
+
+.box {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "image list"
+    "instructions instructions";
+  gap: 1rem;
+  /* background: #000000d5; */
+  background: #213037;
+  /* background: #66baff; */
+  padding: 2rem 2rem 1rem 2rem;
+}
+
+.recipe-header {
+  grid-area: header;
+  color: #fff;
+}
+
+.recipe-image {
+  grid-area: image;
+  height: auto;
+  width: 100%;
+}
+
+.recipe-list {
+  grid-area: list;
+  padding: 1.5rem;
+  background: #ececec;
+}
+
+.instructions-box {
+  grid-area: instructions;
+  background: #ececec;
+  padding: 1rem;
+}
+
+/* Search Bar */
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  /* background: #000000d5; */
+  background: #213037;
+  /* background: #66baff; */
+}
+
+.ingredients-input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 16px 15px;
+  outline: none;
+  background: #ececec;
+  border: transparent 1px solid;
+}
+
+input[type="text"] {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  outline: none;
+  border-radius: 0px;
+}
+
+input[type="text"]:focus {
+  border-color: #fff;
+}
+
+.ingredients-btn {
+  width: 100%;
+  padding: 16px 32px;
+  cursor: pointer;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 0px;
+  border: transparent 1px solid;
+}
+
+.ingredients-btn:focus {
+  border-color: #222;
+}
+
+.ingredients-btn:hover {
+  background: #d6d6d6;
+  transition: all 0.4s ease-in;
+}
+
+.ingredients-form {
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+/* Front Page */
+
+.search-body {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0.6)
+    ),
+    url(../images/fridge-searchpage.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 125vh;
+}
+
+.header {
+  text-align: center;
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  color: #fff;
+}
+
+.sub-header {
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing: 1.8px;
+  font-weight: 200;
+  color: #fff;
+}
+
+.search-input {
+  text-decoration: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  outline: none;
+  background: transparent;
+  border: #fff 2px solid;
+  border-radius: 0px;
+  color: #fff;
+
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 16px 15px;
+  outline: none;
+}
+
+/* Footer */
+
+.footer {
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+}
+
+.footer-navlink {
+  padding: 10px;
+  color: #fff;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+}
