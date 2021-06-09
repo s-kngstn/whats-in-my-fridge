@@ -31,8 +31,7 @@ app.post("/", function (req, res) {
   https.get(url, function (response) {
     console.log(response.statusCode);
     if (response.statusCode === 402) {
-      res.send(`<h1>Sorry out of requests! Please try again tomorrow :)</h1>`);
-      res.end();
+      res.render("402");
     } else {
       let ingredientItems = "";
       response.on("data", function (data) {
@@ -45,7 +44,7 @@ app.post("/", function (req, res) {
         // const ingredientList = [];
         console.log(recipes.length);
         if (recipes.length === 0) {
-          res.send(`<h1>No Results</h1>`);
+          res.render("notfound");
         } else {
           const random = Math.floor(Math.random() * recipes.length);
 
@@ -70,7 +69,7 @@ app.post("/", function (req, res) {
             const instructions = results[0];
             const eachStep = instructions.data[0].steps;
             if (!instructions.data[0].steps){
-              res.send(`<h1>Sorry, please try again</h1>`);
+              res.render("notfound");
               res.end();
             }
             eachStep.forEach(function (steps) {

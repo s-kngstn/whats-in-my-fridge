@@ -1,0 +1,28 @@
+<%- include("header") -%>
+<div class="search-body">
+  <div class="container">
+    <h1 class="header">WHATS IN YOUR FRIDGE?</h1>
+    <h3 class="sub-header not-found">
+      Sorry, we couldnt find any recipes using those ingredients. <br />
+      Please try another search.
+    </h3>
+  </div>
+  <div class="container">
+    <div class="search-box__front-page">
+      <form class="ingredients-form" action="/" method="post">
+        <input
+          id="ingredients"
+          class="search-input"
+          type="text"
+          name="ingredients"
+          placeholder="Enter your ingredients.."
+        />
+        <button id="btn" class="btn ingredients-btn" type="submit">
+          Find New Recipe
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- <script src="app.js"></script> -->
+<%- include("footer") -%>
