@@ -22,14 +22,14 @@ app.post("/", function (req, res) {
     const ingSplit = ingredients.split(' ');
     ingredients = ingSplit.join(',');
   }
-  console.log(ingredients)
+  // console.log(ingredients)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`;
   let title;
   let image;
   const ingredientList = [];
   const stepList = [];
   https.get(url, function (response) {
-    console.log(response.statusCode);
+    // console.log(response.statusCode);
     if (response.statusCode === 402) {
       res.render("402");
     } else {
@@ -41,8 +41,7 @@ app.post("/", function (req, res) {
       response.on("end", function () {
         const jsonData = JSON.parse(ingredientItems);
         const recipes = jsonData;
-        // const ingredientList = [];
-        console.log(recipes.length);
+        // console.log(recipes.length);
         if (recipes.length === 0) {
           res.render("notfound");
         } else {
@@ -73,7 +72,7 @@ app.post("/", function (req, res) {
               res.end();
             }
             eachStep.forEach(function (steps) {
-              console.log(steps.step);
+              // console.log(steps.step);
               stepList.push(steps.step);
             });
 
