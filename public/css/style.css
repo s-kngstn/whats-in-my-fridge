@@ -118,6 +118,7 @@ input[type="text"]:focus {
   outline: none;
   border-radius: 0px;
   border: transparent 1px solid;
+  background-color: #fff !important;
 }
 
 .ingredients-btn:focus {
