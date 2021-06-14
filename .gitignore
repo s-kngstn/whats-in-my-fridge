@@ -3,3 +3,5 @@ node_modules/
 todo.MD
 test-frontpage.html
 test.html
+.DS_store
+/*.env
