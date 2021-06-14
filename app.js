@@ -67,7 +67,11 @@ app.post("/", function (req, res) {
           Promise.all([getData()]).then(function (results) {
             const instructions = results[0];
             const eachStep = instructions.data[0].steps;
-            if (!instructions.data[0].steps || instructions.data[0].steps === undefined){
+            if (instructions === undefined || instructions === null){
+              res.render("notfound");
+              res.end();
+            }
+            if (!eachStep || eachStep === undefined){
               res.render("notfound");
               res.end();
             }
