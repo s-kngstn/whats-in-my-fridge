@@ -18,9 +18,9 @@ app.get("/", function (_req, res) {
 
 app.post("/", function (req, res) {
   let ingredients = req.body.ingredients;
-  if (ingredients.includes(' ')) {
-    const ingSplit = ingredients.split(' ');
-    ingredients = ingSplit.join(',');
+  if (ingredients.includes(" ")) {
+    const ingSplit = ingredients.split(" ");
+    ingredients = ingSplit.join(",");
   }
   // console.log(ingredients)
   const url = `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`;
@@ -67,11 +67,21 @@ app.post("/", function (req, res) {
           Promise.all([getData()]).then(function (results) {
             const instructions = results[0];
             const eachStep = instructions.data[0].steps;
-            if (instructions === undefined || instructions === null){
+            if (
+              !instructions ||
+              instructions === undefined ||
+              instructions === null ||
+              instructions === ""
+            ) {
               res.render("notfound");
               res.end();
             }
-            if (!eachStep || eachStep === undefined){
+            if (
+              !eachStep ||
+              eachStep === undefined ||
+              eachStep === "" ||
+              eachStep === null
+            ) {
               res.render("notfound");
               res.end();
             }
@@ -95,10 +105,10 @@ app.post("/", function (req, res) {
 });
 
 let port = process.env.PORT;
-if (port == null || port == ""){
+if (port == null || port == "") {
   port = 3000;
 }
 
-app.listen(port, function(){
+app.listen(port, function () {
   console.log(`Server started on port ${port}`);
 });
