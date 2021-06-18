@@ -59,45 +59,63 @@ app.post("/", function (req, res) {
           });
 
           // GETS YOUR COOKING INSTRUCTIONS (with a secondary API request through axios)//
-          function getData() {
-            return axios.get(
-              `https://api.spoonacular.com/recipes/${recipes[random].id}/analyzedInstructions?apiKey=${apiKey}`
-            );
-          }
-          Promise.all([getData()]).then(function (results) {
-            const instructions = results[0];
-            const eachStep = instructions.data[0].steps;
-            if (
-              !instructions ||
-              instructions === undefined ||
-              instructions === null ||
-              instructions === ""
-            ) {
-              res.render("notfound");
-              res.end();
+          try {
+            function getData() {
+              return axios.get(
+                `https://api.spoonacular.com/recipes/${recipes[random].id}/analyzedInstructions?apiKey=${apiKey}`
+              );
             }
-            if (
-              !eachStep ||
-              eachStep === undefined ||
-              eachStep === "" ||
-              eachStep === null
-            ) {
-              res.render("notfound");
-              res.end();
-            }
-            eachStep.forEach(function (steps) {
-              // console.log(steps.step);
-              stepList.push(steps.step);
-            });
+            // function code goes here;
+            Promise.all([getData()]).then(function (results) {
+              const instructions = results[0];
+              console.log(instructions)
+              console.log('instructions data' + instructions.data[0])
+              if (instructions.data === []){
+                console.log('found error');
+              }
+              const eachStep = instructions.data[0].steps;
+              console.log(eachStep);
+              if (
+                !instructions ||
+                instructions === undefined ||
+                instructions === null ||
+                instructions === ""
+              ) {
+                res.render("notfound");
+                res.end();
+              }
+              if (
+                !eachStep ||
+                eachStep === undefined ||
+                eachStep === "" ||
+                eachStep === null
+              ) {
+                res.render("notfound");
+                res.end();
+              }
 
-            res.render("recipe", {
-              title: title,
-              image: image,
-              ingredientList: ingredientList,
-              stepList: stepList,
+              if (eachStep) {
+                eachStep.forEach(function (steps) {
+                  // console.log(steps.step);
+                  stepList.push(steps.step);
+                });
+
+                res.render("recipe", {
+                  title: title,
+                  image: image,
+                  ingredientList: ingredientList,
+                  stepList: stepList,
+                });
+                res.end();
+              }
             });
+          } catch (e) {
+            // igore error
+            // or if you prefer display an error message here
+            console.log(e);
+            res.render("notfound");
             res.end();
-          });
+          }
         }
       });
     }
